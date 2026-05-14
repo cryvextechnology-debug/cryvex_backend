@@ -1,0 +1,35 @@
+[2026-05-09 23:10:23] [TEST_EVENT] [INFO] [127.0.0.XXX] This is a test log entry.
+[2026-05-09 23:10:23] [FAILED_LOGIN] [WARNING] [192.168.1.XXX] Failed admin login attempt.
+[2026-05-09 23:45:52] [VALIDATION_ERROR] [WARNING] [0.0.0.0] Blocked malicious/invalid Visitor ID: $illegal_operator
+[2026-05-09 23:48:46] [VALIDATION_ERROR] [WARNING] [127.0.0.XXX] Input validation failed: [{'type': 'missing', 'loc': ('query', 'visitor_id'), 'msg': 'Field required', 'input': None}]
+[2026-05-09 23:49:32] [VALIDATION_ERROR] [WARNING] [0.0.0.0] Blocked malicious/invalid Visitor ID: normal_id_with_$_inside
+[2026-05-09 23:49:36] [VALIDATION_ERROR] [WARNING] [0.0.0.0] Blocked malicious/invalid Visitor ID: normal_id_with_$_inside
+[2026-05-09 23:52:30] [ADMIN_AUTH_FAILED] [CRITICAL] [127.0.0.XXX] Invalid admin credentials (Timing attack protection active).
+[2026-05-13 13:47:12] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 13:51:39] [EMAIL_SEND_ERROR] [ERROR] [XXX.XXX.XXX.XXX] Failed to send email to anandhakrishnanr868@gmail.com: (525, b'5.7.1 Unauthorized IP address')
+[2026-05-13 13:55:35] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 13:55:42] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:07:17] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:08:03] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:08:35] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:08:42] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:09:38] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:09:50] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:10:17] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:27:30] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:34:51] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:35:11] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:35:24] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:38:53] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:39:16] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:39:38] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:39:43] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:40:40] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:40:48] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:44:44] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 14:46:58] [WS_CONNECT_REJECTED] [WARNING] [127.0.0.XXX] Missing Token.
+[2026-05-13 22:53:48] [EMAIL_SEND_ERROR] [CRITICAL] [XXX.XXX.XXX.XXX] SMTP Error (525): 5.7.1 Unauthorized IP address
+[2026-05-13 23:02:59] [EMAIL_SEND_ERROR] [CRITICAL] [XXX.XXX.XXX.XXX] SMTP Error (525): 5.7.1 Unauthorized IP address
+[2026-05-13 23:14:52] [EMAIL_SEND_ERROR] [CRITICAL] [XXX.XXX.XXX.XXX] SMTP Error (535): 5.7.8 Authentication failed
+[2026-05-14 15:45:17] [ADMIN_LOGIN_SUCCESS] [INFO] [127.0.0.XXX] Admin successfully logged in.
+[2026-05-14 15:45:47] [ADMIN_LOGIN_SUCCESS] [INFO] [127.0.0.XXX] Admin successfully logged in.

@@ -1,0 +1,30 @@
+# Cryvex - Master Knowledge Base
+
+## About Cryvex
+Cryvex is an elite AI-Web development agency based in South India. We are more than just a software provider; we are your software partners. We create AI automation and solve problems as if they were our own company's challenges, specializing in all types of automation. Our mission is to transform traditional SMEs, manufacturing factories, textile units, and e-commerce brands by deploying "Digital Employees". We move businesses from reactive, manual operations to predictive, automated intelligence.
+
+## The "Digital Employee" Concept
+A Digital Employee is a specialized AI system that acts as a tireless, perfectly accurate worker. They monitor machines, manage inventory, engage with customers, and predict failures before they happen. They never sleep, never make calculation errors, and do not require floor expansion. 
+
+## Industry Specific Solutions
+
+### 1. Textile Manufacturing (Tiruppur, Kanchipuram)
+- **Problem**: 35% of potential revenue is lost to manual inefficiencies, fabric waste in manual cutting, and manual QA defects.
+- **Cryvex Solution**: AI orchestration. We use AI precision cutting (reduces waste from 22% to under 6%), computer vision for 99.8% accurate defect detection at full line speed, and predictive maintenance.
+- **Digital Employees**: Kayal (AI Guide), Meera, Priya, Kavitha, Karthika.
+
+### 2. General Manufacturing (Chennai Auto-parts, PCBs, Steel)
+- **Problem**: Unplanned downtime (costs ₹8,000 per idle hour), knowledge silos (when a senior operator leaves, process logic is lost), and manual inspection errors.
+- **Cryvex Solution**: IoT sensor integration, Digital Twin technology to capture process dependencies, and Predictive Maintenance that flags machine faults 72 hours in advance.
+- **Digital Employees**: Vidhya (AI Guide), Ananya.
+
+### 3. E-Commerce & D2C Brands
+- **Problem**: 70% cart abandonment, inventory stockouts, and delivery delays.
+- **Cryvex Solution**: 
+  - *Sentiment Shield*: Detects churn signals 14 days before a customer leaves and re-engages them with personalized offers.
+  - *Organic Replenishment AI*: Prevents stockouts and overstocking by automatically rebalancing inventory.
+  - *Velocity Mapping*: Real-time geospatial routing to improve on-time delivery from 67% to 96%.
+- **Digital Employees**: Anjali (AI Guide), Sindhu.
+
+## Core Value Proposition
+Cryvex doesn't just sell software; we sell audited financial outcomes. Our implementations typically result in a 4x to 10x ROI within the first 12 months. We offer a completely free 30-minute factory or store-specific audit to map out exact revenue recovery and efficiency gaps.

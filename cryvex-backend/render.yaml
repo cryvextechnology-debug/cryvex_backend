@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: cryvex-backend
+    env: docker
+      - key: REDIS_URI
+        value: "redis://localhost:6379/0"
+      - key: REDIS_PASSWORD
+        generateValue: true
+      - key: ALLOW_MOCK_FALLBACK
+        value: "false"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_PRIVATE_KEY
+        sync: false
+      - key: JWT_PUBLIC_KEY
+        sync: false
+      - key: ADMIN_SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: ASSISTANT_OPENROUTER_API_KEY
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: BREVO_SENDER_EMAIL
+        sync: false
