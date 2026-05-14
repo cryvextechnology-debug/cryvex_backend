@@ -13,10 +13,11 @@ sleep 2
 
 echo "[STARTUP] Redis started. Launching FastAPI application..."
 
-# Start Gunicorn
+# Start Gunicorn with increased timeout for AI model loading
 exec gunicorn app.main:app \
     -k uvicorn.workers.UvicornWorker \
-    -w 4 \
+    -w 2 \
+    --timeout 120 \
     --bind 0.0.0.0:${PORT:-8000} \
     --access-logfile - \
     --error-logfile -
