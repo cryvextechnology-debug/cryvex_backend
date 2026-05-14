@@ -62,12 +62,40 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     security_logger.log_event("VALIDATION_ERROR", "WARNING", client_ip, f"Input validation failed: {exc}")
     return await request_validation_exception_handler(request, exc)
 
+# ── CORS & Security Middleware Configuration ─────────────────────────
+# Parse base origins from environment
+base_origins = [o.strip() for o in settings.CORS_ORIGINS.split(",") if o.strip()]
+
+# Hardened Origin List: Include production URL and common dev origins
+# This ensures that even if CORS_ORIGINS is misconfigured, core functionality remains.
+allowed_origins = list(set(base_origins + [
+    "https://cryvex-backend.onrender.com",  # Production Backend
+    "https://cryvex.ai",                   # Potential Custom Domain
+    "http://localhost:3000",                # React Default
+    "http://localhost:5173",                # Vite Default
+    "http://localhost:8000",                # FastAPI Default
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+]))
+
+# Logic: If '*' is present, we MUST disable allow_credentials for FastAPI compliance.
+# However, if we have specific origins, we prioritize them to enable credentials.
+if "*" in allowed_origins and len(allowed_origins) > 1:
+    # Remove '*' to allow credentials for the specific listed origins
+    allowed_origins = [o for o in allowed_origins if o != "*"]
+    use_credentials = True
+elif "*" in allowed_origins:
+    use_credentials = False
+else:
+    use_credentials = True
+
 fastapi_app.add_middleware(
     CORSMiddleware,
-    allow_origins=[o.strip() for o in settings.CORS_ORIGINS.split(",") if o.strip() and o.strip() != "*"],
-    allow_credentials=True,
+    allow_origins=allowed_origins,
+    allow_credentials=use_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 from fastapi.staticfiles import StaticFiles
@@ -82,7 +110,10 @@ class CachedStaticFiles(StaticFiles):
 
 fastapi_app.mount("/frontend", CachedStaticFiles(directory=os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")), name="frontend")
 
-sio = socketio.AsyncServer(async_mode='asgi', cors_allowed_origins=[o.strip() for o in settings.CORS_ORIGINS.split(",")])
+sio = socketio.AsyncServer(
+    async_mode='asgi', 
+    cors_allowed_origins=allowed_origins if not (len(allowed_origins) == 1 and allowed_origins[0] == "*") else "*"
+)
 
 predictor = LeadPredictor()
 strategist = None
@@ -111,6 +142,16 @@ class MockRedis:
 
     async def exists(self, name):
         return 1 if name in self.data else 0
+
+    async def ping(self):
+        """Simulator for Redis ping."""
+        return True
+
+    async def execute_command(self, cmd, *args, **kwargs):
+        """Simulator for Redis execute_command."""
+        if cmd.upper() == "PING":
+            return True
+        return None
 
     async def hset(self, name, key=None, value=None, values=None):
         if name not in self.data or not isinstance(self.data[name], dict):
@@ -220,20 +261,22 @@ async def startup_db_client():
             print("[OK] PRODUCTION MODE — Connected to Upstash Redis (REST)")
         else:
             # Fallback to local/Docker redis with password authentication
-            from redis import asyncio as aioredis
+            from redis.asyncio import Redis as AsyncRedis
             
             # Smart URI handling: if REDIS_URI doesn't have a password but REDIS_PASSWORD is set, use it.
             redis_uri = settings.REDIS_URI
             password = settings.REDIS_PASSWORD if settings.REDIS_PASSWORD else None
             
             # If URI is default but we have a password, we should prefer the password
-            _redis = aioredis.from_url(
+            _redis = AsyncRedis.from_url(
                 redis_uri, 
                 password=password, 
                 decode_responses=True, 
                 max_connections=50
             )
-            await _redis.ping()
+            # Use execute_command which is explicitly async to satisfy type checkers
+            await _redis.execute_command("PING")
+            
             redis_client = _redis
             print(f"[OK] REDIS MODE — Connected to {redis_uri}")
     except Exception as exc:
