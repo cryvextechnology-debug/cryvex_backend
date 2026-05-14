@@ -229,6 +229,8 @@ async def startup_db_client():
         mongo_uri = MONGODB_URI
         if not mongo_uri:
             mongo_uri = f"mongodb://{settings.MONGO_USER}:{settings.MONGO_PASSWORD}@mongodb:27017/cryvex?authSource=admin"
+        
+        print(f"[STARTUP] Attempting MongoDB connection...")
         # Increased timeout to 5000ms for better stability in live connections
         # Added maxPoolSize and minPoolSize for production concurrency, maxIdleTimeMS to clean up idle connections
         _mongo = AsyncIOMotorClient(
@@ -256,6 +258,7 @@ async def startup_db_client():
     # 2. Connect to Upstash Redis via REST API
     try:
         if UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN:
+            print("[STARTUP] Connecting to Upstash Redis (REST)...")
             _redis = UpstashRedis(url=UPSTASH_REDIS_REST_URL, token=UPSTASH_REDIS_REST_TOKEN)
             # Upstash-redis asyncio doesn't have .ping(), but we can test with .get()
             await _redis.get("ping") 
@@ -265,6 +268,7 @@ async def startup_db_client():
             # Fallback to local/Docker redis with password authentication
             from redis.asyncio import Redis as AsyncRedis
             
+            print("[STARTUP] Connecting to Local Redis (Async)...")
             # Smart URI handling: if REDIS_URI doesn't have a password but REDIS_PASSWORD is set, use it.
             redis_uri = settings.REDIS_URI
             password = settings.REDIS_PASSWORD if settings.REDIS_PASSWORD else None
