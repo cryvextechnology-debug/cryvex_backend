@@ -74,8 +74,10 @@ allowed_origins = list(set(base_origins + [
     "http://localhost:3000",                # React Default
     "http://localhost:5173",                # Vite Default
     "http://localhost:8000",                # FastAPI Default
+    "http://localhost:5500",                # VS Code Live Server
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
+    "http://127.0.0.1:5500",
 ]))
 
 # Logic: If '*' is present, we MUST disable allow_credentials for FastAPI compliance.
