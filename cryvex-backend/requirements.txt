@@ -6,10 +6,18 @@ pydantic-settings
 python-dotenv
 motor
 upstash-redis
+redis
 python-socketio
 brotli-asgi
 python-jose[cryptography]
 httpx
 jinja2
 python-multipart
-# Add any specific AI packages if needed, but the current ones are likely enough.
+langchain
+langchain-community
+langchain-huggingface
+langchain-text-splitters
+faiss-cpu
+pypdf
+sentence-transformers
+pandas
