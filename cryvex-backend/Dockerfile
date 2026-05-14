@@ -1,13 +1,3 @@
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
-    libffi-dev \
-    libssl-dev \
-    python3-dev \
-    redis-server \
-    && rm -rf /var/lib/apt/lists/*
-
-# Use official lightweight Python image
 FROM python:3.11-slim
 
 # Set working directory
@@ -20,6 +10,9 @@ ENV PYTHONUNBUFFERED=1
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    libffi-dev \
+    libssl-dev \
+    python3-dev \
     redis-server \
     && rm -rf /var/lib/apt/lists/*
 
